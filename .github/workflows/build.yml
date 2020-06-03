@@ -36,8 +36,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y webkit2gtk-4.0
 
-      - run: yarn
-      - run: yarn tauri build
+      - name: Build application
+        run: |
+          cargo install tauri-bundler
+          yarn
+          yarn tauri build
 
       - name: Release App
         uses: softprops/action-gh-release@master
